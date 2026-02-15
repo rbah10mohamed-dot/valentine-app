@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amigo ❤️</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffe6eb,#ffd1dc);
+    font-family:'Segoe UI', sans-serif;
+    overflow:hidden;
+}
+
+/* Floating hearts */
+
+.heart{
+    position:absolute;
+    color:#ff4d6d;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-10vh);
+        opacity:0;
+    }
+}
+
+/* Card */
+
+.card{
+    background:white;
+    padding:50px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+    z-index:10;
+}
+
+h1{
+    margin-bottom:30px;
+}
+
+/* Buttons */
+
+button{
+    padding:14px 26px;
+    font-size:18px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    margin:10px;
+    transition:0.3s;
+}
+
+#yes{
+    background:#ff4d6d;
+    color:white;
+}
+
+#yes:hover{
+    transform:scale(1.1);
+}
+
+#no{
+    background:#d3d3d3;
+    position:absolute;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Amigo, will you be my Valentine? ❤️</h1>
+
+    <button id="yes">Yes 🥰</button>
+    <button id="no">No 😢</button>
+</div>
+
+<script>
+
+/* Escaping NO button */
+
+const noBtn = document.getElementById("no");
+
+noBtn.addEventListener("mouseover", () => {
+    noBtn.style.top = Math.random()*80 + "%";
+    noBtn.style.left = Math.random()*80 + "%";
+});
+
+
+/* YES BUTTON — ROMANTIC SCREEN */
+
+document.getElementById("yes").onclick = () => {
+
+document.body.innerHTML = `
+
+<div style="
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-family:sans-serif;
+background:linear-gradient(135deg,#ffccd5,#ffc2d1);
+text-align:center;
+padding:20px;
+">
+
+<h1>❤️ Amigo ❤️</h1>
+
+<h2>
+From the moment you came into my life,  
+everything became more beautiful.
+</h2>
+
+<h2>
+Today I just want to say…  
+I choose you. Always.
+</h2>
+
+<h1>Happy Valentine 💕</h1>
+
+</div>
+`;
+};
+
+
+/* Floating hearts generator */
+
+setInterval(() => {
+
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (Math.random()*20 + 10) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+
+},300);
+
+</script>
+
+</body>
+</html>
